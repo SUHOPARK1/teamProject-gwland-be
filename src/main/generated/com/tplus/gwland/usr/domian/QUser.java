@@ -40,8 +40,6 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath role = createString("role");
 
-    public final ListPath<com.tplus.gwland.svy.domain.Survey, com.tplus.gwland.svy.domain.QSurvey> survey = this.<com.tplus.gwland.svy.domain.Survey, com.tplus.gwland.svy.domain.QSurvey>createList("survey", com.tplus.gwland.svy.domain.Survey.class, com.tplus.gwland.svy.domain.QSurvey.class, PathInits.DIRECT2);
-
     public final StringPath username = createString("username");
 
     public QUser(String variable) {

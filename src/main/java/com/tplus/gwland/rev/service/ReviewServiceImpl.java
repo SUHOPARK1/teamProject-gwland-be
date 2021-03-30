@@ -3,11 +3,11 @@ package com.tplus.gwland.rev.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tplus.gwland.cmm.service.AbstractService;
 import com.tplus.gwland.rev.domain.Review;
+import com.tplus.gwland.rev.domain.ReviewDto;
 import com.tplus.gwland.rev.repository.ReviewRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -35,7 +35,10 @@ public class ReviewServiceImpl extends AbstractService<Review> implements Review
 	@Override
 	public boolean existsById(long id) {return repo.existsById(id);}
 
-	@Override
-	public List<Review> findAll() {return repo.findAll();}
+	
+	public List<ReviewDto> findList() {return repo.findList();}
 
-}
+	@Override
+	public List<Review> findAll() { return repo.findAll();}
+
+	}

@@ -17,48 +17,48 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tplus.gwland.cmm.controller.AbstractController;
 import com.tplus.gwland.rev.domain.Review;
+import com.tplus.gwland.rev.domain.ReviewDto;
 import com.tplus.gwland.rev.service.ReviewServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequiredArgsConstructor
 @RequestMapping("/review")
 
-public class ReviewController extends AbstractController<Review>{
+public class ReviewController{
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	final ReviewServiceImpl reviewService;
+	final ReviewServiceImpl service;
 	
 	@PostMapping("/save")
 	public ResponseEntity<Long> save(@RequestBody Review t) {
-		System.out.println(t.getRevContent());
-		logger.info(t.getRevContent());
-		return ResponseEntity.ok(reviewService.save(t));
+		return ResponseEntity.ok(service.save(t));
 	}
 	@DeleteMapping("/delete")
 	public ResponseEntity<Long> delete(@RequestBody Review t) {
-		return ResponseEntity.ok(reviewService.delete(t));
+		System.out.println(t.toString());
+		return ResponseEntity.ok(service.delete(t));
 	}
 	@GetMapping("/count")
 	public ResponseEntity<Long> count() {
-		return ResponseEntity.ok(reviewService.count());
+		return ResponseEntity.ok(service.count());
 	}
-	@GetMapping("/findAll")
-	public ResponseEntity<List<Review>> findAll() {
-		return ResponseEntity.ok(reviewService.findAll());
+	@GetMapping("/all")
+	public ResponseEntity<List<ReviewDto>> findAll() {
+		return ResponseEntity.ok(service.findList());
 	}
 	@GetMapping("/one/{id}")
 	public ResponseEntity<Review> getOne(@PathVariable long id) {
-		return ResponseEntity.ok(reviewService.getOne(id));
+		return ResponseEntity.ok(service.getOne(id));
 	}
 	@GetMapping("/find/{id}")
 	public ResponseEntity<Optional<Review>> findById(@PathVariable long id) {
-		return ResponseEntity.ok(reviewService.findById(id));
+		return ResponseEntity.ok(service.findById(id));
 	}
 	@GetMapping("/exists/{id}")
 	public ResponseEntity<Boolean> existsById(@PathVariable long id) {
-		return ResponseEntity.ok(reviewService.existsById(id));
+		return ResponseEntity.ok(service.existsById(id));
 	}
 	
 	

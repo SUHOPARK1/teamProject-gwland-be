@@ -37,7 +37,7 @@ public class Review {
 	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name="pce_num")
+	@JoinColumn(name="contentid")
 	private Place place;
 
 	

@@ -34,9 +34,7 @@ public class QPlace extends EntityPathBase<Place> {
 
     public final StringPath cat3 = createString("cat3");
 
-    public final com.tplus.gwland.cat.domain.QCategory category;
-
-    public final StringPath contentid = createString("contentid");
+    public final NumberPath<Long> contentid = createNumber("contentid", Long.class);
 
     public final StringPath contenttypeid = createString("contenttypeid");
 
@@ -54,11 +52,11 @@ public class QPlace extends EntityPathBase<Place> {
 
     public final StringPath modifiedtime = createString("modifiedtime");
 
-    public final NumberPath<Long> pceNum = createNumber("pceNum", Long.class);
+    public final com.tplus.gwland.dtl.domain.QPlaceDetail placedetail;
 
     public final StringPath readcount = createString("readcount");
 
-    public final ListPath<com.tplus.gwland.rev.domain.Review, com.tplus.gwland.rev.domain.QReview> reviewList = this.<com.tplus.gwland.rev.domain.Review, com.tplus.gwland.rev.domain.QReview>createList("reviewList", com.tplus.gwland.rev.domain.Review.class, com.tplus.gwland.rev.domain.QReview.class, PathInits.DIRECT2);
+    public final ListPath<com.tplus.gwland.rev.domain.Review, com.tplus.gwland.rev.domain.QReview> reviews = this.<com.tplus.gwland.rev.domain.Review, com.tplus.gwland.rev.domain.QReview>createList("reviews", com.tplus.gwland.rev.domain.Review.class, com.tplus.gwland.rev.domain.QReview.class, PathInits.DIRECT2);
 
     public final StringPath sigungucode = createString("sigungucode");
 
@@ -86,7 +84,7 @@ public class QPlace extends EntityPathBase<Place> {
 
     public QPlace(Class<? extends Place> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.category = inits.isInitialized("category") ? new com.tplus.gwland.cat.domain.QCategory(forProperty("category")) : null;
+        this.placedetail = inits.isInitialized("placedetail") ? new com.tplus.gwland.dtl.domain.QPlaceDetail(forProperty("placedetail"), inits.get("placedetail")) : null;
     }
 
 }

@@ -1,7 +1,5 @@
 package com.tplus.gwland.pce.domain;
 
-import javax.persistence.Column;
-
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 

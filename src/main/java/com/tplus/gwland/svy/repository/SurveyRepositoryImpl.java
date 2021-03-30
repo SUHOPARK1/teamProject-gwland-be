@@ -1,5 +1,5 @@
 package com.tplus.gwland.svy.repository;
 
-public class SurveyRepositoryImpl{
+public class SurveyRepositoryImpl implements ISurveyRepository{
 
 }
