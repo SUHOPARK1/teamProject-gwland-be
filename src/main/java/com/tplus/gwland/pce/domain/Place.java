@@ -34,10 +34,10 @@ public class Place {
     @Column(name="title") private String title;
     @Column(name="zipcode") private String zipcode;
 
-    @OneToMany(mappedBy = "place")
-    private List<Review> reviews = new ArrayList<>();
+    //@OneToMany(mappedBy = "place")
+    //private List<Review> reviews = new ArrayList<>();
 
-    @OneToOne(mappedBy = "place")
-    private PlaceDetail placedetail;
+    //@OneToOne(mappedBy = "place")
+    //private PlaceDetail placedetail;
     public Place() {};
 }

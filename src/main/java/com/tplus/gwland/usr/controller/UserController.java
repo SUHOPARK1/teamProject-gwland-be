@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -54,6 +56,10 @@ public class UserController extends AbstractController<User>{
 	public ResponseEntity<List<User>> findAll() {
 		logger.info("모든 유저정보 불러오기");
 		return ResponseEntity.ok(service.findAll());
+	}
+	@GetMapping("/list")
+	public ResponseEntity<Page<User>> findList(Pageable pageable){
+		return ResponseEntity.ok(service.findList(pageable));
 	}
 	@GetMapping("/one/{id}")
 	public ResponseEntity<User> getOne(@PathVariable long id) {

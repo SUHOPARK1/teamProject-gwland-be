@@ -15,7 +15,7 @@ public class PlaceDto {
 	private String cat1;
 	private String cat2;
 	private String cat3;
-	private String contentid;
+	private long contentid;
 	private String contenttypeid;
 	private String createdtime;
 	private String firstimage;

@@ -56,6 +56,7 @@ public class PlaceController extends AbstractController<Place> {
 
 	@GetMapping("/find/{id}")
 	public ResponseEntity<Optional<Place>> findById(@PathVariable long id) {
+		System.out.println(id);
 		return ResponseEntity.ok(service.findById(id));
 	}
 

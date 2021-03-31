@@ -3,6 +3,8 @@ package com.tplus.gwland.usr.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -52,4 +54,5 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		return null;
 	}
+	public Page<User> findList(Pageable pageable) {return repo.findAll(pageable);}
 }

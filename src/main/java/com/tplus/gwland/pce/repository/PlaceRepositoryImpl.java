@@ -43,12 +43,13 @@ public class PlaceRepositoryImpl extends QuerydslRepositorySupport implements IP
     }
     @Override
     public List<PlaceDto> findByList() {
-        List<Tuple> res = qf.select(place.title,place.firstimage).from(place).fetch();
+        List<Tuple> res = qf.select(place.title, place.firstimage, place.contentid).from(place).fetch();
         List<PlaceDto> list = new ArrayList<>();
         for(int i=0;i<res.size();i++) {
             PlaceDto p = new PlaceDto();
             p.setTitle(res.get(i).get(place.title));
             p.setFirstimage(res.get(i).get(place.firstimage));
+            p.setContentid(res.get(i).get(place.contentid));
             list.add(p);
         }
         return list;
