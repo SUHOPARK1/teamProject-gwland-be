@@ -16,7 +16,9 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class ReviewServiceImpl implements ReviewService {
+	
 	private final ReviewRepository repo;
+	
 	private final PlaceRepository pceRepo;
 
 	public long save(ReviewDto r) {

@@ -22,6 +22,8 @@ public interface UserRepository extends JpaRepository<User, Long>, UserCustomRep
 	public boolean existsByProviderId(String providerId);
 	
 	public boolean existsByEmail(String email);
+	
+	public User findByEmail(String email);
 
 }
 

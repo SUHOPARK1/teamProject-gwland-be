@@ -1,4 +1,4 @@
-package com.tplus.gwland.sec.config;
+package com.tplus.gwland.cmm.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

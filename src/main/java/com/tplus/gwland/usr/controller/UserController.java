@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.tplus.gwland.cmm.controller.AbstractController;
+import com.tplus.gwland.sec.CurrentUser;
+import com.tplus.gwland.sec.UserPrincipal;
 import com.tplus.gwland.usr.domian.User;
+import com.tplus.gwland.usr.repository.UserRepository;
 import com.tplus.gwland.usr.service.UserServiceImpl;
 
 import lombok.RequiredArgsConstructor;
@@ -32,7 +35,9 @@ import lombok.RequiredArgsConstructor;
 
 public class UserController extends AbstractController<User>{
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	final UserServiceImpl service;
+	private final UserRepository userRepository;
+	private final UserServiceImpl service;
+	
 	
 	@PostMapping("/add")
 	public ResponseEntity<Long> save(@RequestBody User t) {
@@ -54,16 +59,15 @@ public class UserController extends AbstractController<User>{
 	}
 	@GetMapping("/all")
 	public ResponseEntity<List<User>> findAll() {
-		logger.info("모든 유저정보 불러오기");
 		return ResponseEntity.ok(service.findAll());
 	}
 	@GetMapping("/list")
 	public ResponseEntity<Page<User>> findList(Pageable pageable){
 		return ResponseEntity.ok(service.findList(pageable));
 	}
-	@GetMapping("/one/{id}")
-	public ResponseEntity<User> getOne(@PathVariable long id) {
-		return ResponseEntity.ok(service.getOne(id));
+	@GetMapping("/one")
+	public ResponseEntity<User> getOne(@CurrentUser UserPrincipal userPrincipal) {
+		return ResponseEntity.ok(userRepository.findById(userPrincipal.getId()).orElse(null));
 	}
 	@GetMapping("/find/{id}")
 	public ResponseEntity<Optional<User>> findById(@PathVariable long id) {
@@ -72,5 +76,9 @@ public class UserController extends AbstractController<User>{
 	@GetMapping("/exists/{id}")
 	public ResponseEntity<Boolean> existsById(@PathVariable long id) {
 		return ResponseEntity.ok(service.existsById(id));
+	}
+	@Override   //예외처리  
+	public ResponseEntity<User> getOne(long id) {
+		return null;
 	}
 }

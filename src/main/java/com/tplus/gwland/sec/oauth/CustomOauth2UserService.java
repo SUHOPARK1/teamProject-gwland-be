@@ -1,4 +1,4 @@
-package com.tplus.gwland.sec.config.oauth;
+package com.tplus.gwland.sec.oauth;
 
 import java.util.Map;
 import java.util.Optional;
@@ -12,18 +12,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.tplus.gwland.sec.config.auth.PrincipalDetails;
-import com.tplus.gwland.sec.config.oauth.provider.KakaoUserInfo;
-import com.tplus.gwland.sec.config.oauth.provider.GoogleUserInfo;
-import com.tplus.gwland.sec.config.oauth.provider.NaverUserInfo;
-import com.tplus.gwland.sec.config.oauth.provider.OAuth2UserInfo;
+import com.tplus.gwland.sec.UserPrincipal;
+import com.tplus.gwland.sec.oauth.provider.GoogleUserInfo;
+import com.tplus.gwland.sec.oauth.provider.KakaoUserInfo;
+import com.tplus.gwland.sec.oauth.provider.NaverUserInfo;
+import com.tplus.gwland.sec.oauth.provider.OAuth2UserInfo;
 import com.tplus.gwland.usr.domian.User;
 import com.tplus.gwland.usr.repository.UserRepository;
 
 
 
 @Controller
-public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
+public class CustomOauth2UserService extends DefaultOAuth2UserService {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -71,6 +71,6 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 			userRepository.save(user);
 		}
 
-		return new PrincipalDetails(user, oAuth2User.getAttributes());
+		return UserPrincipal.create(user, oAuth2User.getAttributes());
 	}
 }

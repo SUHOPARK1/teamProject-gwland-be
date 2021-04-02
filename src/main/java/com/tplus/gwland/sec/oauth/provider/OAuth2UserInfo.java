@@ -1,4 +1,4 @@
-package com.tplus.gwland.sec.config.oauth.provider;
+package com.tplus.gwland.sec.oauth.provider;
 
 public interface OAuth2UserInfo {
 	String getUsername();
