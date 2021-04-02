@@ -19,6 +19,7 @@ import com.tplus.gwland.cmm.controller.AbstractController;
 import com.tplus.gwland.rev.domain.Review;
 import com.tplus.gwland.rev.domain.ReviewDto;
 import com.tplus.gwland.rev.service.ReviewServiceImpl;
+import com.tplus.gwland.svy.domain.Survey;
 
 import lombok.RequiredArgsConstructor;
 
@@ -29,10 +30,10 @@ import lombok.RequiredArgsConstructor;
 
 public class ReviewController{
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	final ReviewServiceImpl service;
+	private final ReviewServiceImpl service;
 	
 	@PostMapping("/save")
-	public ResponseEntity<Long> save(@RequestBody Review t) {
+	public ResponseEntity<Long> save(@RequestBody ReviewDto t) {
 		return ResponseEntity.ok(service.save(t));
 	}
 	@DeleteMapping("/delete")
@@ -60,6 +61,11 @@ public class ReviewController{
 	public ResponseEntity<Boolean> existsById(@PathVariable long id) {
 		return ResponseEntity.ok(service.existsById(id));
 	}
+	@GetMapping("/list/{contentid}")
+    public ResponseEntity<List<ReviewDto>> findRevByPceConentId(@PathVariable String contentid){
+		System.out.println(contentid);
+    	return ResponseEntity.ok(service.findRevByPceConentId(Integer.valueOf(contentid)));
+    }
 	
 	
 }

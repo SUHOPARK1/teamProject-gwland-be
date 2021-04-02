@@ -2,20 +2,25 @@ package com.tplus.gwland.pce.repository;
 
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import static com.tplus.gwland.pce.domain.QPlace.*;
+import static com.tplus.gwland.rev.domain.QReview.review;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
 
+import com.querydsl.core.types.Projections;
 import com.querydsl.core.Tuple;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.tplus.gwland.pce.domain.Place;
 import com.tplus.gwland.pce.domain.PlaceDto;
+import com.tplus.gwland.rev.domain.ReviewDto;
 
 
 
@@ -36,14 +41,20 @@ public class PlaceRepositoryImpl extends QuerydslRepositorySupport implements IP
         return em.createQuery("select p from Place p where p.title like : title").setParameter("title", title).getResultList();
     }
     @Override
-    public List<Place> findByContentid(long contentid) {
-        return qf.selectFrom(place)
-                .where(place.contentid.eq(contentid))
+    public List<PlaceDto> findByContentid(long contentid) {
+    	List<PlaceDto> places = qf.from(place)
+    			.select(Projections.constructor
+    				   (PlaceDto.class, place.contentid,
+    					                place.firstimage, 
+        								place.title))
+    			.where(place.contentid.eq(contentid))
                 .fetch();
+    	return places;
     }
     @Override
     public List<PlaceDto> findByList() {
-        List<Tuple> res = qf.select(place.title, place.firstimage, place.contentid).from(place).fetch();
+        List<Tuple> res = qf.select(place.title, place.firstimage,
+        							place.contentid).from(place).fetch();
         List<PlaceDto> list = new ArrayList<>();
         for(int i=0;i<res.size();i++) {
             PlaceDto p = new PlaceDto();

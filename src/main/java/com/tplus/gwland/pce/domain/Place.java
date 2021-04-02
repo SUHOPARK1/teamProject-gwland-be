@@ -11,7 +11,7 @@ import com.tplus.gwland.rev.domain.Review;
 import lombok.Getter;
 import lombok.ToString;
 
-@Entity @Getter @ToString @Table(name ="places")
+@Entity @Getter @ToString @Table(name ="place")
 public class Place {
     @Id @Column(name="contentid") private long contentid;
     @Column(name="addr1") private String addr1;
@@ -34,10 +34,10 @@ public class Place {
     @Column(name="title") private String title;
     @Column(name="zipcode") private String zipcode;
 
-    //@OneToMany(mappedBy = "place")
-    //private List<Review> reviews = new ArrayList<>();
+    @OneToMany(mappedBy = "place")
+    private List<Review> reviews = new ArrayList<>();
 
-    //@OneToOne(mappedBy = "place")
-    //private PlaceDetail placedetail;
+    @OneToOne(mappedBy = "place")
+    private PlaceDetail placedetail;
     public Place() {};
 }

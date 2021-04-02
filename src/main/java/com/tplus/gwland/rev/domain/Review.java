@@ -1,6 +1,7 @@
 package com.tplus.gwland.rev.domain;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -17,8 +18,12 @@ import com.tplus.gwland.pce.domain.Place;
 import com.tplus.gwland.rcm.domain.Recom;
 import com.tplus.gwland.usr.domian.User;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+
+@NoArgsConstructor
 @Entity @Getter @Table(name = "review")
 public class Review {
 	
@@ -40,10 +45,21 @@ public class Review {
 	@JoinColumn(name="contentid")
 	private Place place;
 
+	@Builder
 	
-
-	
+	public Review(long revNum, String revName, String revStar, String revContent, 
+			      String revDate, List<Recom> recom, User user, Place place) {
+		super();
+		this.revNum = revNum;
+		this.revName = revName;
+		this.revStar = revStar;
+		this.revContent = revContent;
+		this.revDate = revDate;
+		this.recom = recom;
+		this.user = user;
+		this.place = place;
 	}
+ }
 	
 	
 

@@ -10,7 +10,7 @@ import com.tplus.gwland.rcm.domain.Recom;
 
 import lombok.Getter;
 
-@Entity @Getter @Table(name ="surveys")
+@Entity @Getter @Table(name ="survey")
 public class Survey {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id @Column(name="svy_num")

@@ -56,7 +56,6 @@ public class PlaceController extends AbstractController<Place> {
 
 	@GetMapping("/find/{id}")
 	public ResponseEntity<Optional<Place>> findById(@PathVariable long id) {
-		System.out.println(id);
 		return ResponseEntity.ok(service.findById(id));
 	}
 
@@ -76,7 +75,7 @@ public class PlaceController extends AbstractController<Place> {
 	}
 
 	@GetMapping("/dtl/{contentid}")
-	public ResponseEntity<List<Place>> findByContentid(@PathVariable long contentid) {
+	public ResponseEntity<List<PlaceDto>> findByContentid(@PathVariable long contentid) {
 		return ResponseEntity.ok(service.findByContentid(contentid));
 	}
 

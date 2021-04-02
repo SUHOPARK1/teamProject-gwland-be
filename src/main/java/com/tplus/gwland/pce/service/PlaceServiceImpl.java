@@ -76,7 +76,7 @@ public class PlaceServiceImpl extends AbstractService<Place> implements PlaceSer
 	}
 
 	@Override
-	public List<Place> findByContentid(long contentid) {
+	public List<PlaceDto> findByContentid(long contentid) {
 		return repo.findByContentid(contentid);
 	}
 

@@ -14,7 +14,7 @@ import com.tplus.gwland.pce.domain.PlaceDto;
 
 interface IPlaceRepository {
     public List<Place> findByTitle(String title);
-    public List<Place> findByContentid(long contentid);
+    public List<PlaceDto> findByContentid(long contentid);
     public List<PlaceDto> findByList();
 }
 public interface PlaceRepository extends JpaRepository<Place, Long>, IPlaceRepository {

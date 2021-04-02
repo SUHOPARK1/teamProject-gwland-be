@@ -38,6 +38,7 @@ public class QReview extends EntityPathBase<Review> {
 
     public final com.tplus.gwland.usr.domian.QUser user;
 
+
     public QReview(String variable) {
         this(Review.class, forVariable(variable), INITS);
     }

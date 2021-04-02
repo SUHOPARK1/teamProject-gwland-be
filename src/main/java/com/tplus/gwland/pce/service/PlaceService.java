@@ -14,7 +14,7 @@ public interface PlaceService {
 
 	public int update(String tel, long pceNum);
 
-	public List<Place> findByContentid(long contentid);
+	public List<PlaceDto> findByContentid(long contentid);
 
 	public List<PlaceDto> findByList();
 
