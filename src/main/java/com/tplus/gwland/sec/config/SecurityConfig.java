@@ -52,12 +52,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.defaultSuccessUrl("/")
 		.and()
 		.oauth2Login()
-		.authorizationEndpoint()
-			.authorizationRequestRepository(cookieAuthorizationRequestRepository())
-			.and()
-		.userInfoEndpoint()
-			.userService(customOauth2UserService)
-			.and()
+			.authorizationEndpoint()
+				.authorizationRequestRepository(cookieAuthorizationRequestRepository())
+				.and()
+			.userInfoEndpoint()
+				.userService(customOauth2UserService)
+				.and()
 		.successHandler(oAuth2AuthenticationSuccessHandler);
 		http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}

@@ -64,7 +64,7 @@ public class QSurvey extends EntityPathBase<Survey> {
 
     public QSurvey(Class<? extends Survey> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.place = inits.isInitialized("place") ? new com.tplus.gwland.pce.domain.QPlace(forProperty("place"), inits.get("place")) : null;
+        this.place = inits.isInitialized("place") ? new com.tplus.gwland.pce.domain.QPlace(forProperty("place")) : null;
     }
 
 }

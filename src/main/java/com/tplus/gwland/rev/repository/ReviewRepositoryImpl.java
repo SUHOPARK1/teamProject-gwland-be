@@ -56,7 +56,8 @@ public class ReviewRepositoryImpl extends QuerydslRepositorySupport implements R
 								review.revName,
 								review.revStar,
 								review.revContent,
-								review.revDate))
+								review.revDate,
+								review.user.num))
 						.join(place).on(review.place.contentid.eq(place.contentid))
 						.where(place.contentid.eq(contentId)).fetch();
 		return reviews;}

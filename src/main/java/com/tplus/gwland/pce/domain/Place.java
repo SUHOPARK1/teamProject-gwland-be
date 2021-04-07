@@ -5,12 +5,13 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.tplus.gwland.dtl.domain.PlaceDetail;
 import com.tplus.gwland.rev.domain.Review;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+@NoArgsConstructor
 @Entity @Getter @ToString @Table(name ="place")
 public class Place {
     @Id @Column(name="contentid") private long contentid;
@@ -33,11 +34,9 @@ public class Place {
     @Column(name="tel") private String tel;
     @Column(name="title") private String title;
     @Column(name="zipcode") private String zipcode;
+    @Column(name="overview") private String overveiw;
 
     @OneToMany(mappedBy = "place")
     private List<Review> reviews = new ArrayList<>();
 
-    @OneToOne(mappedBy = "place")
-    private PlaceDetail placedetail;
-    public Place() {};
 }

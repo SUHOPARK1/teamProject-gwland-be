@@ -46,7 +46,8 @@ public class PlaceRepositoryImpl extends QuerydslRepositorySupport implements IP
     			.select(Projections.constructor
     				   (PlaceDto.class, place.contentid,
     					                place.firstimage, 
-        								place.title))
+        								place.title,
+        								place.overveiw))
     			.where(place.contentid.eq(contentid))
                 .fetch();
     	return places;

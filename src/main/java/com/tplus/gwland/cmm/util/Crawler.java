@@ -51,7 +51,7 @@ public class Crawler {
 			String revContent = ls.get(i).findElement(By.className("txt_comment")).getText();
 			String revStar = ls.get(i).findElement(By.className("num_rate")).getText();
 			String revDate = ls.get(i).findElement(By.className("time_write")).getText();
-			revList.add(new reviewer(revStar,revName,revContent,revDate,number));
+			revList.add(new reviewer(revStar,revName,revContent,revDate, number));
 			logger.info(revList.get(revList.size()-1).toString());}
 		return revList;}
 	

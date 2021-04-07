@@ -18,15 +18,17 @@ public class ReviewDto {
 	private String revContent;
 	private String revDate;
 	private long contentid;
+	private long num;
 	
 	public ReviewDto(long revNum, String revName, String revStar, 
-					              String revContent, String revDate) {
+					              String revContent, String revDate, long num) {
 		super();
 		this.revNum = revNum;
 		this.revName = revName;
 		this.revStar = revStar;
 		this.revContent = revContent;
 		this.revDate = revDate;
+		this.num = num;
 	}
 }
 	

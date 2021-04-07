@@ -38,7 +38,6 @@ public class QReview extends EntityPathBase<Review> {
 
     public final com.tplus.gwland.usr.domian.QUser user;
 
-
     public QReview(String variable) {
         this(Review.class, forVariable(variable), INITS);
     }
@@ -57,7 +56,7 @@ public class QReview extends EntityPathBase<Review> {
 
     public QReview(Class<? extends Review> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.place = inits.isInitialized("place") ? new com.tplus.gwland.pce.domain.QPlace(forProperty("place"), inits.get("place")) : null;
+        this.place = inits.isInitialized("place") ? new com.tplus.gwland.pce.domain.QPlace(forProperty("place")) : null;
         this.user = inits.isInitialized("user") ? new com.tplus.gwland.usr.domian.QUser(forProperty("user")) : null;
     }
 

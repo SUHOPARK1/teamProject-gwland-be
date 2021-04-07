@@ -18,8 +18,6 @@ public class QPlace extends EntityPathBase<Place> {
 
     private static final long serialVersionUID = 1915677695L;
 
-    private static final PathInits INITS = PathInits.DIRECT2;
-
     public static final QPlace place = new QPlace("place");
 
     public final StringPath addr1 = createString("addr1");
@@ -52,7 +50,7 @@ public class QPlace extends EntityPathBase<Place> {
 
     public final StringPath modifiedtime = createString("modifiedtime");
 
-    public final com.tplus.gwland.dtl.domain.QPlaceDetail placedetail;
+    public final StringPath overveiw = createString("overveiw");
 
     public final StringPath readcount = createString("readcount");
 
@@ -67,24 +65,15 @@ public class QPlace extends EntityPathBase<Place> {
     public final StringPath zipcode = createString("zipcode");
 
     public QPlace(String variable) {
-        this(Place.class, forVariable(variable), INITS);
+        super(Place.class, forVariable(variable));
     }
 
     public QPlace(Path<? extends Place> path) {
-        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
+        super(path.getType(), path.getMetadata());
     }
 
     public QPlace(PathMetadata metadata) {
-        this(metadata, PathInits.getFor(metadata, INITS));
-    }
-
-    public QPlace(PathMetadata metadata, PathInits inits) {
-        this(Place.class, metadata, inits);
-    }
-
-    public QPlace(Class<? extends Place> type, PathMetadata metadata, PathInits inits) {
-        super(type, metadata, inits);
-        this.placedetail = inits.isInitialized("placedetail") ? new com.tplus.gwland.dtl.domain.QPlaceDetail(forProperty("placedetail"), inits.get("placedetail")) : null;
+        super(Place.class, metadata);
     }
 
 }

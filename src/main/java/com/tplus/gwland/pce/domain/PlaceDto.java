@@ -33,10 +33,12 @@ public class PlaceDto {
 	private String tel;
 	private String title;
 	private String zipcode;
-	public PlaceDto(long contentid, String firstimage, String title) {
+	private String overview;
+	public PlaceDto(long contentid, String firstimage, String title, String overview) {
 		super();
 		this.contentid = contentid;
 		this.firstimage = firstimage;
 		this.title = title;
+		this.overview = overview;
 	}
 }

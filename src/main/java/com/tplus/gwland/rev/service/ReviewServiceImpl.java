@@ -10,6 +10,8 @@ import com.tplus.gwland.pce.repository.PlaceRepository;
 import com.tplus.gwland.rev.domain.Review;
 import com.tplus.gwland.rev.domain.ReviewDto;
 import com.tplus.gwland.rev.repository.ReviewRepository;
+import com.tplus.gwland.usr.repository.UserRepository;
+import com.tplus.gwland.usr.repository.UserRepositoryImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,6 +22,8 @@ public class ReviewServiceImpl implements ReviewService {
 	private final ReviewRepository repo;
 	
 	private final PlaceRepository pceRepo;
+	
+	private final UserRepository usrRepo;
 
 	public long save(ReviewDto r) {
 		System.out.println(r);
@@ -50,6 +54,7 @@ public class ReviewServiceImpl implements ReviewService {
 				.revContent(r.getRevContent())
 				.revDate(r.getRevDate())
 				.place(pceRepo.getOne(r.getContentid()))
+				.user(usrRepo.getOne(r.getNum()))
 				.build();
 	}
 }

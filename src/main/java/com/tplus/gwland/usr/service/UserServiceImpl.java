@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.tplus.gwland.cmm.service.AbstractService;
 import com.tplus.gwland.usr.domian.User;
+import com.tplus.gwland.usr.domian.UserDto;
 import com.tplus.gwland.usr.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -55,4 +56,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 		return null;
 	}
 	public Page<User> findList(Pageable pageable) {return repo.findAll(pageable);}
+	
+	public UserDto getProfile(long id) {
+		return new UserDto(repo.getOne(id));}
 }

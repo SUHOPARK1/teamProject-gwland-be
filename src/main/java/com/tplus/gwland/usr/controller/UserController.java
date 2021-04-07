@@ -22,6 +22,7 @@ import com.tplus.gwland.cmm.controller.AbstractController;
 import com.tplus.gwland.sec.CurrentUser;
 import com.tplus.gwland.sec.UserPrincipal;
 import com.tplus.gwland.usr.domian.User;
+import com.tplus.gwland.usr.domian.UserDto;
 import com.tplus.gwland.usr.repository.UserRepository;
 import com.tplus.gwland.usr.service.UserServiceImpl;
 
@@ -66,8 +67,8 @@ public class UserController extends AbstractController<User>{
 		return ResponseEntity.ok(service.findList(pageable));
 	}
 	@GetMapping("/one")
-	public ResponseEntity<User> getOne(@CurrentUser UserPrincipal userPrincipal) {
-		return ResponseEntity.ok(userRepository.findById(userPrincipal.getId()).orElse(null));
+	public ResponseEntity<UserDto> getOne(@CurrentUser UserPrincipal userPrincipal) {
+		return ResponseEntity.ok(service.getProfile(userPrincipal.getId()));
 	}
 	@GetMapping("/find/{id}")
 	public ResponseEntity<Optional<User>> findById(@PathVariable long id) {
