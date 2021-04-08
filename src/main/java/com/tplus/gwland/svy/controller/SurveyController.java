@@ -63,6 +63,5 @@ public class SurveyController {
         return ResponseEntity.ok(service.findList(pageable));
     }
     
-    
 
 }
